@@ -3,24 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/src/resources/static/styles/style.css">
     <title>Consultar Clientes</title>
 </head>
 <body>
-    <header>
-        <nav>
-            <a href="/src/resources/static/index.html">Home</a>
-            <a href="/src/resources/static/cadastro.html">Cadastrar</a>
+    <header class="cabecalho">
+        <nav class="cabecalho__menu">
+            <a class="cabecalho__menu__link" href="/src/resources/static/index.html">Home</a>
+            <a class="cabecalho__menu__link" href="/src/resources/static/cadastro.html">Cadastrar</a>
         </nav>
     </header>
-    <main>
-        <form id="formulario__consulta" action="">
-            <p>Consultar Cliente:</p>
-            <label for="cpfConsulta">CPF:</label><br>
-            <input type="text" id="cpfConsulta" name="cpfConsulta"><br><br>
+    <main class="conteudo">
+        <form class="conteudo__formulario" id="formulario__consulta" action="">
+            <p class="conteudo__formulario__titulo">Consultar Cliente:</p>
+            <label class="conteudo__formulario__label" for="cpfConsulta">CPF:</label>
+            <input class="conteudo__formulario__input" type="text" id="cpfConsulta" name="cpfConsulta"><br><br>
             
-            <input type="submit" value="Consultar">
+            <div class="conteudo__formulario__botao">
+                <input id="botao__consultar" type="submit" value="Consultar">
+            </div>
         </form>
-        <p id="mensagemConsulta"></p>
+        <p id="mensagem__consulta"></p>
+        <div id="tabela__singular">
+            <table id="tabela__singular__resultado">
+                <thead>
+                    <tr>
+                        <th class="celula">Nome</th>
+                        <th class="celula">CPF</th>
+                        <th class="celula">Celular</th>
+                        <th class="celula">Email</th>
+                    </tr>
+                </thead>
+                <tbody id="tabela__singular__corpo"></tbody>
+            </table>
+        </div>
+        <div id="tabela__completa">
+            <table id="tabela__completa__resultado">
+                <thead>
+                    <tr>
+                        <th class="celula">Nome</th>
+                        <th class="celula">CPF</th>
+                        <th class="celula">Celular</th>
+                        <th class="celula">Email</th>
+                    </tr>
+                </thead>
+                <tbody id="tabela__completa__corpo"></tbody>
+            </table>
+        </div>
     </main>
     <footer></footer>
     <script src="/src/resources/static/scripts/consulta.js"></script>

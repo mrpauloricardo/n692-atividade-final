@@ -20,17 +20,37 @@ public class ConsultarHandler implements HttpHandler {
     public void handle(HttpExchange exchange) throws IOException {
         Headers headers = exchange.getResponseHeaders();
         headers.add("Access-Control-Allow-Origin", "*");
+        headers.add("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+        headers.add("Access-Control-Allow-Headers", "Content-Type, Authorization");
 
-        String cpf = exchange.getRequestURI().getQuery().split("=")[1];
-        CadastrarHandler.Usuario usuario = usuarios.get(cpf);
-        if (usuario != null) {
-            String response = "Nome: " + usuario.getNome() + "\n"
-                            + "CPF: " + usuario.getCpf() + "\n"
-                            + "Celular: " + usuario.getCelular() + "\n"
-                            + "Email: " + usuario.getEmail();
-            sendResponse(exchange, response);
+        if (exchange.getRequestMethod().equalsIgnoreCase("OPTIONS")) {
+            exchange.sendResponseHeaders(200, -1);
+            return;
+        }
+
+        String query = exchange.getRequestURI().getQuery();
+        
+        if (query != null && query.startsWith("cpf=")) {
+            String cpf = query.split("=")[1];
+            CadastrarHandler.Usuario usuario = usuarios.get(cpf);
+            if (usuario != null) {
+                String response = "Nome: " + usuario.getNome() + "\n"
+                                + "CPF: " + usuario.getCpf() + "\n"
+                                + "Celular: " + usuario.getCelular() + "\n"
+                                + "Email: " + usuario.getEmail();
+                sendResponse(exchange, response);
+            } else {
+                sendResponse(exchange, "Usuário não encontrado");
+            }
         } else {
-            sendResponse(exchange, "Usuário não encontrado");
+            StringBuilder response = new StringBuilder();
+            for (CadastrarHandler.Usuario usuario : usuarios.values()) {
+                response.append("Nome: ").append(usuario.getNome()).append("\n")
+                        .append("CPF: ").append(usuario.getCpf()).append("\n")
+                        .append("Celular: ").append(usuario.getCelular()).append("\n")
+                        .append("Email: ").append(usuario.getEmail()).append("\n\n");
+            }
+            sendResponse(exchange, response.toString());
         }
     }
 

@@ -29,8 +29,12 @@ public class CadastrarHandler implements HttpHandler {
         String celular = params[2].split("=")[1];
         String email = params[3].split("=")[1];
 
-        usuarios.put(cpf, new Usuario(nome, cpf, celular, email));
-        sendResponse(exchange, "Usuário cadastrado com sucesso");
+        if (usuarios.containsKey(cpf)) {
+            sendResponse(exchange, "Erro: Usuário já cadastrado.");
+        } else {
+            usuarios.put(cpf, new Usuario(nome, cpf, celular, email));
+            sendResponse(exchange, "Usuário cadastrado com sucesso");
+        }
     }
 
     private void sendResponse(HttpExchange exchange, String response) throws IOException {

@@ -1,18 +1,45 @@
-## Getting Started
+# Mini Sistema de Cadastro e Consulta de Usuários
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+Este é um mini sistema de cadastro e consulta de usuários, desenvolvido com Java (Back-End) e HTML, CSS e JavaScript (Front-End).
 
-## Folder Structure
+## Funcionalidades
 
-The workspace contains two folders by default, where:
+- Cadastro de usuários com nome, CPF, celular e email.
+- Consulta de usuários por CPF.
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+## Como Usar
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+1. Clone o repositório:
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
+   ```bash
+   git clone https://github.com/mrpauloricardo/n692-atividade-final.git
 
-## Dependency Management
+2. Navegue até o diretório do projeto:
 
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+    ```bash
+    cd n692-atividade-final
+
+3. Compile e execute o servidor Java:
+
+    ```bash
+    javac -cp .;http.jar Main.java
+    java -cp .;http.jar Main
+
+4. Abra o arquivo index.html no seu navegador para acessar o front-end do sistema.
+
+## Dependências
+
+- Java 8 ou superior.
+- Biblioteca http.jar para o servidor HTTP em Java.
+
+## Estrutura do Projeto
+
+- Main.java: Arquivo principal que inicia o servidor HTTP.
+- CadastrarHandler.java: Handler para a rota de cadastro de usuários.
+- ConsultarHandler.java: Handler para a rota de consulta de usuários.
+- index.html, cadastro.html, consulta.html, style.css, cadastro.js, consulta.js: Arquivos do front-end.
+
+## Observações
+
+- Certifique-se de ter o Java e a biblioteca http.jar instalados e configurados corretamente antes de executar o servidor.
+- O front-end foi testado nos seguintes navegadores: Chrome, Firefox e Edge.

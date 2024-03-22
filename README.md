@@ -19,18 +19,13 @@ Este é um mini sistema de cadastro e consulta de usuários, desenvolvido com Ja
     ```bash
     cd n692-atividade-final
 
-3. Compile e execute o servidor Java:
-
-    ```bash
-    javac -cp .;http.jar Main.java
-    java -cp .;http.jar Main
+3. Execute o arquivo Main.java para iniciar o servidor.
 
 4. Abra o arquivo index.html no seu navegador para acessar o front-end do sistema.
 
 ## Dependências
 
 - Java 8 ou superior.
-- Biblioteca http.jar para o servidor HTTP em Java.
 
 ## Estrutura do Projeto
 
@@ -41,5 +36,5 @@ Este é um mini sistema de cadastro e consulta de usuários, desenvolvido com Ja
 
 ## Observações
 
-- Certifique-se de ter o Java e a biblioteca http.jar instalados e configurados corretamente antes de executar o servidor.
+- Certifique-se de ter o Java instalado e configurado corretamente antes de executar o servidor.
 - O front-end foi testado nos seguintes navegadores: Chrome, Firefox e Edge.
